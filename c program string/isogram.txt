@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+
+int isogram_sum(const std::string &str) {
+  // Initialize variables to store the sum of ASCII values and a flag for validation
+  int sum = 0;
+  int valid = 1;
+  // Create an array to store the occurrence of each character
+  int char_count[256] = {0};
+  // Iterate through each character in the string
+  for (int i = 0; i < str.length(); i++) {
+    // Add the ASCII value of the current character to the sum
+    sum += str[i];
+    // Increment the occurrence of the current character in the array
+    char_count[str[i]]++;
+
+    // Check if the current character has occurred more than once
+    if (char_count[str[i]] > 1) {
+      // If so, set the validation flag to 0 and return the index of the repeated character
+      valid = 0;
+      return i;
+    }
+  }
+  // If the validation flag is 1, return the sum of ASCII values
+  if (valid) {
+    return sum;
+  }
+}
+
+int main() {
+  std::string word1 = "isogram";
+  int result1 = isogram_sum(word1);
+  std::cout << "The sum of ASCII values for " << word1 << " is " << result1 << std::endl;
+
+  std::string word2 = "repeated";
+  int result2 = isogram_sum(word2);
+  std::cout << "The index of the first repeated character in " << word2 << " is " << result2 << std::endl;
+
+  return 0;
+}

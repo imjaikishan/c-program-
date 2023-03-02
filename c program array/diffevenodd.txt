@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+int evenAndOddSumE(int arr[],int n,int &evenSum,int &oddSum)
+{
+    //int evenSum=0,oddSum=0,diff=0;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]%2==0)
+        {
+            evenSum+=arr[i];
+        }
+        else{
+            oddSum+=arr[i];
+        }
+    }
+    int max=0;
+    if(evenSum>oddSum )
+    {
+        max=evenSum-oddSum ;
+    } 
+    else{
+        max=oddSum-evenSum;
+    }
+    
+    return max;
+}
+int main()
+{
+    int n,diff,evenElementSum,oddElementSum;
+    cout << "Enter size:" << endl;
+    cin >> n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+    
+    diff=evenAndOddSumE(arr,n,evenElementSum,oddElementSum);
+    cout << "Even elements sum:" << evenElementSum << endl;
+    cout << "Odd element Sum:" << oddElementSum << endl;
+    cout << "Difference between even and odd elements" << diff<< endl;
+    return 0;
+}

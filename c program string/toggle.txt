@@ -1,0 +1,58 @@
+
+#include <iostream>
+using namespace std;
+void Toggle(string &str)
+{
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (islower(str[i]))
+        {
+            str[i] = toupper(str[i]);
+        }
+
+        else if (isupper(str[i]))
+        {
+            str[i] = tolower(str[i]);
+        }
+    }
+}
+
+int main()
+{
+    string str;
+    cout << "input any string: ";
+    cin >> str;
+    Toggle(str);
+    cout << "toggled string:- " << str << ;
+    return 0;
+}
+/*
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+void toggle_string(char str[])
+{
+    for (int i = 0; i < strlen(str); i++)
+    {
+        if (islower(str[i]))
+        {
+            str[i] = toupper(str[i]);
+        }
+        else if (isupper(str[i]))
+            str[i] = tolower(str[i]);
+    }
+}
+
+int main()
+{
+    char str[20];
+    printf("enter the string: ");
+    fgets(str, 20, stdin);
+    toggle_string(str);
+    printf("after toggle the string : %s\n", str);
+
+    return 0;
+}
+
+____________________________________________________________________________________
+*/

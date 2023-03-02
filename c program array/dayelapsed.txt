@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int Day_Elapsed(int &yy, int &mm, int &dd)
+{
+    int DE = 0;
+    int arr[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    for (int i = 0; i < mm - 1; i++)
+        DE += arr[i];
+    if (((yy % 4 == 0) && (yy % 100 != 0)) || (yy % 400 == 0))
+    {
+        DE = DE + dd + 1;
+        return DE;
+    }
+    DE = DE + dd;
+    return DE;
+}
+int main()
+{
+    int dd, mm, yy;
+    cout << "Enter input in the following format 'YY MM DD : ";
+    cin >> yy >> mm >> dd;
+    cout << "No of Days Elapsed is : " << Day_Elapsed(yy, mm, dd) << endl;
+    return 0;
+}

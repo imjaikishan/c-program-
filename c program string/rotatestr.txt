@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void rotateString(string &str, int k, string direction) {
+  int n = str.length();
+  if (k > n) {
+    k = k % n;
+  }
+
+  if (direction == "left") {
+    string temp = str.substr(0, k);
+    str.erase(0, k);
+    str = str + temp;
+  } else if (direction == "right") {
+    string temp = str.substr(n - k, k);
+    str.erase(n - k, k);
+    str = temp + str;
+  }
+}
+
+int main() {
+  string str;
+  int k;
+  string direction;
+
+  cout << "Enter a string: ";
+  cin >> str;
+
+  cout << "Enter the number of positions to rotate: ";
+  cin >> k;
+
+  cout << "Enter 'left' to rotate left or 'right' to rotate right: ";
+  cin >> direction;
+
+  rotateString(str, k, direction);
+
+  cout << "The rotated string is: " << str << endl;
+
+  return 0;
+}

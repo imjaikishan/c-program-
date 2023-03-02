@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstring>
+
+void convertToSeconds(const std::string &time, unsigned &totalSeconds) {
+  char timeCopy[time.length() + 1];
+  strcpy(timeCopy, time.c_str());
+
+  char *token = strtok(timeCopy, ":");
+  unsigned hours = strtoul(token, nullptr, 10);
+  token = strtok(nullptr, ":");
+  unsigned minutes = strtoul(token, nullptr, 10);
+  token = strtok(nullptr, ":");
+  unsigned seconds = strtoul(token, nullptr, 10);
+
+  totalSeconds = hours * 3600 + minutes * 60 + seconds;
+}
+
+int main() {
+  std::string time;
+  std::cout << "Enter the time in the format hh:mm:ss: ";
+  std::cin >> time;
+
+  unsigned totalSeconds;
+  convertToSeconds(time, totalSeconds);
+
+  std::cout << "The total number of seconds is: " << totalSeconds << std::endl;
+
+  return 0;
+}

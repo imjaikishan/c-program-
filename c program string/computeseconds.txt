@@ -1,0 +1,59 @@
+/*
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int computeTotalSeconds(char time[])
+{
+    char *token;
+    token = strtok(time, ":");
+    int hh = strtoul(token, NULL, 10);
+    token = strtok(NULL, ":");
+    int mm = strtoul(token, NULL, 10);
+    token = strtok(NULL, ":");
+    int ss = strtoul(token, NULL, 10);
+    return (hh * 3600) + (mm * 60) + ss;
+}
+
+int main()
+{
+    char time[9];
+    printf("Enter time in hh:mm:ss format: ");
+    scanf("%s", time);
+    int total_seconds = computeTotalSeconds(time);
+    printf("Total seconds: %d\n", total_seconds);
+    return 0;
+}
+
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+int computeSeconds(string time)
+{
+    string delimiter = ":";
+    size_t pos = 0;
+    string token;
+    int hh, mm, ss;
+    pos = time.find(delimiter);
+    token = time.substr(0, pos);
+    hh = stoi(token);
+    time.erase(0, pos + delimiter.length());
+    pos = time.find(delimiter);
+    token = time.substr(0, pos);
+    mm = stoi(token);
+    time.erase(0, pos + delimiter.length());
+    ss = stoi(time);
+    return (hh * 3600) + (mm * 60) + ss;
+}
+
+int main()
+{
+    string time;
+    cout << "Enter time in hh:mm:ss format: ";
+    getline(cin, time);
+    int total_seconds = computeSeconds(time);
+    cout << "Total seconds: " << total_seconds << endl;
+    return 0;
+}

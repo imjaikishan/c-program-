@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include <regex>
+using namespace std;
+
+bool isValidEmail(const string &email) {
+  regex pattern("^[a-zA-Z0-9\\.]+@[a-z]+\\.[a-z]+$");
+  return regex_match(email, pattern);
+}
+
+int main() {
+  string emails[] = {"abc@example.com", "abc@example.com.", "abc@.com", "abc@", "@example.com"};
+  int n = sizeof(emails) / sizeof(emails[0]);
+
+  int count = 0;
+  for (int i = 0; i < n; i++) {
+    if (isValidEmail(emails[i])) {
+      count++;
+    }
+  }
+
+  cout << "The number of valid emails is: " << count << endl;
+
+  return 0;
+}
